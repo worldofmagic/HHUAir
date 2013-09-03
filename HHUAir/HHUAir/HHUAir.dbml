@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HHUAirDB" Class="HHUAirDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\HHUAirDB.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HHUAirDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Airports" Member="Airports">
+    <Type Name="Airport">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsRecommend" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Airport_Ticket" Member="Tickets" ThisKey="Name,City" OtherKey="ArrivalAirport,ArrivalCity" Type="Ticket" />
+      <Association Name="Airport_Ticket1" Member="Tickets1" ThisKey="Name,City" OtherKey="DepartAirport,DepartCity" Type="Ticket" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Models" Member="Models">
+    <Type Name="Model">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MinSeats" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxSeats" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Model_Ticket" Member="Tickets" ThisKey="Name" OtherKey="ModelName" Type="Ticket" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tickets" Member="Tickets">
+    <Type Name="Ticket">
+      <Column Name="FlightNumber" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DepartAirport" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ArrivalAirport" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DepartCity" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ArrivalCity" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DepartDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ArrivalDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModelName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentPrice" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SoldAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsRecommend" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Memo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Ticket_Order" Member="Orders" ThisKey="FlightNumber,DepartDatetime" OtherKey="FlightNumber,DepartDatetime" Type="Order" />
+      <Association Name="Airport_Ticket" Member="Airport" ThisKey="ArrivalAirport,ArrivalCity" OtherKey="Name,City" Type="Airport" IsForeignKey="true" />
+      <Association Name="Airport_Ticket1" Member="Airport1" ThisKey="DepartAirport,DepartCity" OtherKey="Name,City" Type="Airport" IsForeignKey="true" />
+      <Association Name="Model_Ticket" Member="Model" ThisKey="ModelName" OtherKey="Name" Type="Model" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FlightNumber" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DepartDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PassengerNames" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PassengerIds" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactInfo" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Memo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Ticket_Order" Member="Ticket" ThisKey="FlightNumber,DepartDatetime" OtherKey="FlightNumber,DepartDatetime" Type="Ticket" IsForeignKey="true" />
+      <Association Name="aspnet_User_Order" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_Order" Member="Orders" ThisKey="UserId" OtherKey="UserId" Type="Order" />
+    </Type>
+  </Table>
+</Database>

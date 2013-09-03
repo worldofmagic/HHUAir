@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="HHUAir">
+  <DataContextMoniker Name="/HHUAirDataContext" />
+  <nestedChildShapes>
+    <classShape Id="20483044-686a-4a09-8a03-0260e5d32eeb" absoluteBounds="4.375, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HHUAirDataContext/Airport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="435befd3-75e7-4c4c-af2c-0f123bb32297" absoluteBounds="4.3900000000000006, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8fd6d091-2e78-4b5a-8273-cff454966d34" absoluteBounds="4.375, 4.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HHUAirDataContext/Model" />
+      <nestedChildShapes>
+        <elementListCompartment Id="659e20e8-9299-478a-86c3-1326fe3d9dbe" absoluteBounds="4.39, 5.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47cab08b-3c37-4fcc-88c1-27b2218802c0" absoluteBounds="0.5, 3.5, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/HHUAirDataContext/Ticket" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d22d1c9-295d-4692-b4c3-828d7cfd2c85" absoluteBounds="0.51500000000000012, 3.96, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 1.8862939453125); (4 : 2.2612939453125); (4 : 4.87342447916667); (2.5 : 4.87342447916667)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HHUAirDataContext/Airport/Airport_Ticket" />
+      <nodes>
+        <classShapeMoniker Id="20483044-686a-4a09-8a03-0260e5d32eeb" />
+        <classShapeMoniker Id="47cab08b-3c37-4fcc-88c1-27b2218802c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.375 : 0.78124725); (1.11781003354443 : 0.78124725); (1.11781003354443 : 3.5)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/HHUAirDataContext/Airport/Airport_Ticket1" />
+      <nodes>
+        <classShapeMoniker Id="20483044-686a-4a09-8a03-0260e5d32eeb" />
+        <classShapeMoniker Id="47cab08b-3c37-4fcc-88c1-27b2218802c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.375 : 5.66429768880208); (2.5 : 5.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HHUAirDataContext/Model/Model_Ticket" />
+      <nodes>
+        <classShapeMoniker Id="8fd6d091-2e78-4b5a-8273-cff454966d34" />
+        <classShapeMoniker Id="47cab08b-3c37-4fcc-88c1-27b2218802c0" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c635c70e-541d-4e88-82b5-c9ea8ce122f4" absoluteBounds="4.375, 2.125, 2, 2.5401025390625">
+      <DataClassMoniker Name="/HHUAirDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11fec930-430b-4c47-a9bf-2b22fb59e60f" absoluteBounds="4.39, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 4.08255126953125); (3.91666666666667 : 4.08255126953125 : JumpStart); (4.08333333333333 : 4.08255126953125 : JumpEnd); (4.375 : 4.08255126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HHUAirDataContext/Ticket/Ticket_Order" />
+      <nodes>
+        <classShapeMoniker Id="47cab08b-3c37-4fcc-88c1-27b2218802c0" />
+        <classShapeMoniker Id="c635c70e-541d-4e88-82b5-c9ea8ce122f4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="49bea3e1-00b6-4f08-bba1-6097854e7562" absoluteBounds="0.5, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/HHUAirDataContext/aspnet_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ed83ae60-d74f-4b5e-a48e-e589a7991fb8" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.39024983723958); (3.91666666666667 : 2.39024983723958 : JumpStart); (4.08333333333333 : 2.39024983723958 : JumpEnd); (4.375 : 2.39024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HHUAirDataContext/aspnet_User/aspnet_User_Order" />
+      <nodes>
+        <classShapeMoniker Id="49bea3e1-00b6-4f08-bba1-6097854e7562" />
+        <classShapeMoniker Id="c635c70e-541d-4e88-82b5-c9ea8ce122f4" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
